@@ -20,7 +20,7 @@
         <h4 class="card-title">Trading Manager</h4>
       </div>
       <div class="card-body">
-        <form class="form">
+        <form class="form" onsubmit="tradingController.add(event)">
           <div class="row">
             <div class="col-12 col-sm-6">
               <div class="form-group">
@@ -39,7 +39,7 @@
 
             <div class="col-12 col-sm-6">
               <div class="form-group">
-                <label for="quantidade">Amount</label>
+                <label for="amount">Amount</label>
                 <input
                   type="number"
                   min="1"
@@ -56,8 +56,8 @@
           <div class="row">
             <div class="col-12 col-sm-6">
               <div class="form-group">
-                <label for="data">Date</label>
-                <input type="date" id="data" class="form-control" required autofocus />
+                <label for="date">Date</label>
+                <input type="date" id="date" class="form-control" required autofocus />
               </div>
             </div>
             <div class="col-12 col-sm-6">
@@ -92,5 +92,4 @@
       <tfoot></tfoot>
     </table>
   </body>
-  <!-- <script src="./dist/index."></script> -->
 </html>
