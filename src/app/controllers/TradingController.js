@@ -1,5 +1,6 @@
 import Trading from "../models/Trading";
 import TradingList from "../models/TradingList";
+import TradingView from "../views/TradingView";
 
 class TradingController {
   constructor() {
@@ -10,6 +11,8 @@ class TradingController {
     this._inputValue = $("#value");
 
     this._tradingList = new TradingList();
+    this._tradingView = new TradingView($("#trading-view"));
+    this._tradingView.render(this._tradingList.list);
   }
 
   add(event) {
@@ -22,9 +25,10 @@ class TradingController {
     });
 
     this._tradingList.add(trading);
+    this._tradingView.render(this._tradingList.list);
     this._cleanForm();
 
-    console.log(this._tradingList);
+    console.log(this._tradingList.list);
   }
 
   _cleanForm() {
