@@ -1,5 +1,5 @@
 import Trading from "../models/Trading";
-import { format } from "date-fns";
+import TradingList from "../models/TradingList";
 
 class TradingController {
   constructor() {
@@ -8,7 +8,10 @@ class TradingController {
     this._inputAmount = $("#amount");
     this._inputDate = $("#date");
     this._inputValue = $("#value");
+
+    this._tradingList = new TradingList();
   }
+
   add(event) {
     event.preventDefault();
 
@@ -18,7 +21,18 @@ class TradingController {
       value: this._inputValue.value
     });
 
-    console.log(format(trading.date, "dd/MM/yyyy"));
+    this._tradingList.add(trading);
+    this._cleanForm();
+
+    console.log(this._tradingList);
+  }
+
+  _cleanForm() {
+    this._inputAmount.value = 1;
+    this._inputDate.value = "";
+    this._inputValue.value = 0;
+
+    this._inputValue.focus();
   }
 }
 
