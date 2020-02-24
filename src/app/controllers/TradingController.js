@@ -1,6 +1,7 @@
 import Trading from "../models/Trading";
 import TradingList from "../models/TradingList";
 import TradingView from "../views/TradingView";
+import MessageView from "../views/MessageView";
 
 class TradingController {
   constructor() {
@@ -12,6 +13,7 @@ class TradingController {
 
     this._tradingList = new TradingList();
     this._tradingView = new TradingView($("#trading-view"));
+    this._messageView = new MessageView($("#message-view"));
     this._tradingView.render(this._tradingList.list);
   }
 
@@ -26,9 +28,9 @@ class TradingController {
 
     this._tradingList.add(trading);
     this._tradingView.render(this._tradingList.list);
-    this._cleanForm();
+    this._messageView.render("Trade has been added");
 
-    console.log(this._tradingList.list);
+    this._cleanForm();
   }
 
   _cleanForm() {

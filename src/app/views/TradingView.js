@@ -1,8 +1,9 @@
-import { formattedDate, teste } from "../helpers/date-helper";
+import View from "./View.js";
+import { formattedDate } from "../helpers/date-helper";
 
-class TradingView {
+class TradingView extends View {
   constructor(element) {
-    this._element = element;
+    super(element);
   }
 
   _template(tradings) {
@@ -31,14 +32,10 @@ class TradingView {
         .join("")}</tbody>
 
       <tfoot>
-        <td colspan="3"></td>
+        <td colspan="3"><strong>Total</strong></td>
         <td>${tradings.reduce((total, trading) => total + trading.volume, 0)}</td>
       </tfoot>
     </table>`;
-  }
-
-  render(list) {
-    this._element.innerHTML = this._template(list);
   }
 }
 
